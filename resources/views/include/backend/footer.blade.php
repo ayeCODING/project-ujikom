@@ -1,25 +1,30 @@
-<div id="kt_app_footer" class="app-footer">
-    <!--begin::Footer container-->
-    <div class="py-3 app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack">
-        <!--begin::Copyright-->
-        <div class="order-2 text-gray-900 order-md-1">
-            <span class="text-muted fw-semibold me-1">2024 &copy;</span>
-            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">ayeCODING</a>
-        </div>
-        <!--end::Copyright-->
-        <!--begin::Menu-->
-        <ul class="order-1 menu menu-gray-600 menu-hover-primary fw-semibold">
-            <li class="menu-item">
-                <a href="https://keenthemes.com" target="_blank" class="px-2 menu-link">About</a>
-            </li>
-            <li class="menu-item">
-                <a href="https://devs.keenthemes.com" target="_blank" class="px-2 menu-link">Support</a>
-            </li>
-            <li class="menu-item">
-                <a href="https://1.envato.market/Vm7VRE" target="_blank" class="px-2 menu-link">Purchase</a>
-            </li>
-        </ul>
-        <!--end::Menu-->
+<footer class="content-footer footer bg-footer-theme">
+    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+      <div class="mb-2 mb-md-0">
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        , made with ❤️ by
+        <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+      </div>
+      <div>
+        <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+        <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+        <a
+          href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+          target="_blank"
+          class="footer-link me-4"
+          >Documentation</a
+        >
+
+        <a
+          href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+          target="_blank"
+          class="footer-link me-4"
+          >Support</a
+        >
+      </div>
     </div>
-    <!--end::Footer container-->
-</div>
+  </footer>
