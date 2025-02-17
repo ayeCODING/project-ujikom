@@ -115,7 +115,7 @@
                         <div class="dropdown dropdown-access">
                             <a href="account.html" class="access_link"><span>Account</span></a>
                             <div class="dropdown-menu">
-                                <a href="account.html" class="btn_1">Sign In or Sign Up</a>
+                                <a href="{{ route('login') }}" class="btn_1">Sign In or Sign Up</a>
                                 <ul>
                                     <li>
                                         <a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
@@ -158,3 +158,13 @@
     </div>
     <!-- /search_mobile -->
 </div>
+<script>
+    document.querySelectorAll('.main-menu ul li a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.querySelector('span').style.width = '100%';
+        });
+        link.addEventListener('mouseleave', function() {
+            this.querySelector('span').style.width = '0%';
+        });
+    });
+</script>

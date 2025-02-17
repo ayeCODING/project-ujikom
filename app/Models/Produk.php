@@ -11,7 +11,7 @@ class Produk extends Model
 
     /**
      * Nama tabel yang terkait dengan model.
-     * Jika nama tabel sesuai dengan konvensi Laravel (plural dari nama model), 
+     * Jika nama tabel sesuai dengan konvensi Laravel (plural dari nama model),
      * properti ini tidak perlu diisi. Namun, jika berbeda, Anda perlu mendefinisikannya.
      */
     protected $table = 'produks';
@@ -40,8 +40,28 @@ class Produk extends Model
      * Kolom yang dapat diisi (mass assignable).
      * Ini adalah kolom yang dapat diisi menggunakan metode `create` atau `update`.
      */
+
+     public function Sluggable(): array
+     {
+         return [
+             'slug' => [
+                 'source' => 'nama_produk'
+             ]
+         ];
+     }
+
+
+
+     public function deleteImage()
+     {
+         if ($this->gambar && file_exists(public_path('images/produk' . $this->gambar))) {
+             return unlink(public_path('images/produk' . $this->gambar));
+         }
+     }
+
     protected $fillable = [
         'nama_produk',
+        'gambar',
         'harga',
         'stok',
         'deskripsi',

@@ -7,11 +7,23 @@
                 <h5 class="mb-0"><i class="bx bx-plus-circle"></i> Tambah Produk</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('produk.store') }}" method="POST">
+                <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Nama Produk</label>
                         <input type="text" class="form-control" id="nama_produk" name="nama_produk" required onkeyup="generateSlug()">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="gambar" class="col-sm-3 col-form-label">Gambar</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control" id="gambar" name="gambar">
+                            @if ($errors->has('gambar'))
+                                <div class="alert alert-danger">
+                                    {{ $errors->first('gambar') }}
+                                </div>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="mb-3">

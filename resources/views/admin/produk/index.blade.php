@@ -15,43 +15,40 @@
                         <thead class="bg-light text-center">
                             <tr>
                                 <th style="width: 5%">No</th>
-                                <th style="width: 20%">Nama Produk</th>
-                                <th style="width: 15%">Kategori</th>
+                                <th style="width: 15%">Nama Produk</th>
+                                <th style="width: 15%">Gambar</th>
+                                <th style="width: 10%">Kategori</th>
                                 <th style="width: 10%">Harga</th>
                                 <th style="width: 10%">Stok</th>
-                                <th style="width: 20%">Brand</th>
+                                <th style="width: 15%">Brand</th>
                                 <th style="width: 20%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($produk as $item)
+                            @if ($produk->isEmpty())
                                 <tr>
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $item->nama_produk }}</td>
-                                    <td>{{ $item->kategori->nama_kategori }}</td>
-                                    <td>Rp{{ number_format($item->harga, 0, ',', '.') }}</td>
-                                    <td>{{ $item->stok }}</td>
-                                    <td>{{ $item->brand_name }}</td>
-                                    <td class="text-center">
-                                        <div class="d-flex justify-content-center">
-                                            <a href="{{ route('produk.show', $item->slug) }}" class="btn btn-info btn-sm me-2 d-flex align-items-center">
-                                                <i class="bx bx-search"></i> Detail
-                                            </a>
-                                            <a href="{{ route('produk.edit', $item->slug) }}" class="btn btn-warning btn-sm me-2 d-flex align-items-center">
-                                                <i class="bx bx-edit"></i> Edit
-                                            </a>
-                                            <form action="{{ route('produk.destroy', $item->slug) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm d-flex align-items-center" onclick="return confirmDelete('{{ $item->slug }}')">
-                                                    <i class="bx bx-trash"></i> Hapus
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
+                                    <td colspan="7" class="text-center">Tidak ada produk tersedia.</td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($produk as $item)
+                                    <tr>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                        <td>{{ $item->nama_produk }}</td>
+                                        <td>
+                                            <img src="{{ asset('/images/produk/' . $item->gambar) }}" width="100">
+                                        </td>
+                                        <td>{{ optional($item->kategori)->nama_kategori }}</td>
+                                        <td>Rp{{ number_format($item->harga, 0, ',', '.') }}</td>
+                                        <td>{{ $item->stok }}</td>
+                                        <td>{{ $item->brand_name }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('produk.show', $item->slug) }}" class="btn btn-info btn-sm">Detail</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
+
                     </table>
                 </div>
             </div>

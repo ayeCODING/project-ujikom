@@ -7,6 +7,8 @@ use App\Http\Middleware\isAdmin;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'indexPage']);
+Route::get('/contact', [ContactController::class, 'index']);
 
 Auth::routes();
 

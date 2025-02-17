@@ -14,8 +14,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $produk = Produk::all();
-        
+        $produk = Produk::with('kategori')->get();
         return view('admin.produk.index', compact('produk'));
     }
 
@@ -38,23 +37,33 @@ public function store(Request $request)
     // Validasi data input
     $request->validate([
         'nama_produk' => 'required|string|max:255',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
         'harga' => 'required|numeric|min:0',
         'stok' => 'required|integer|min:0',
         'deskripsi' => 'nullable|string',
-        'kategori_id' => 'required|exists:kategoris,id',
+        'kategori_id' => 'required|exists:kategoris,kategori_id',
         'brand_name' => 'nullable|string|max:255',
     ]);
 
     // Simpan produk ke database
-    Produk::create([
-        'nama_produk' => $request->nama_produk,
-        'harga' => $request->harga,
-        'stok' => $request->stok,
-        'deskripsi' => $request->deskripsi,
-        'kategori_id' => $request->kategori_id,
-        'brand_name' => $request->brand_name,
-    ]);
+    $produk = new Produk();
+        $produk->nama_produk = $request->nama_produk;
+        if ($request->hasFile('gambar')) {
+            $img = $request->file('gambar');
+            $name = rand(1000, 9999) . $img->getClientOriginalName();
+            $img->move(public_path('/images/produk'), $name);
+            $produk->gambar = $name;
+        }
+        $produk->harga = $request->harga;
+        $produk->stok = $request->stok;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->kategori_id = $request->kategori_id;
+        $produk->brand_name = $request->brand_name;
+        $produk->slug = Str::slug($request->nama_produk);
+        // Tambahkan slug otomatis
 
+        $produk->save();
+        
     return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan!');
 }
 
@@ -83,6 +92,7 @@ public function store(Request $request)
 {
     $request->validate([
         'nama_produk' => 'required|string|max:255|unique:produks,nama_produk,' . $produk->id,
+        'gambar' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         'harga' => 'required|numeric|min:0',
         'stok' => 'required|integer|min:0',
         'deskripsi' => 'nullable|string',
@@ -90,15 +100,19 @@ public function store(Request $request)
         'brand_name' => 'required|string|max:255',
     ]);
 
-    $produk->update([
-        'nama_produk' => $request->nama_produk,
-        'slug' => Str::slug($request->nama_produk),
-        'harga' => $request->harga,
-        'stok' => $request->stok,
-        'deskripsi' => $request->deskripsi,
-        'kategori_id' => $request->kategori_id,
-        'brand_name' => $request->brand_name,
-    ]);
+    $produk->nama_produk = $request->nama_produk;
+        if ($request->hasFile('gambar')) {
+            $img = $request->file('gambar');
+            $name = rand(1000, 9999) . $img->getClientOriginalName();
+            $img->move(public_path('/images/produk'), $name);
+            $produk->gambar = $name;
+        }
+        $produk->harga = $request->harga;
+        $produk->stok = $request->stok;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->kategori_id = $request->kategori_id;
+        $produk->brand_name = $request->brand_name;
+        $produk->slug = Str::slug($request->nama_produk);
 
     return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui!');
 }

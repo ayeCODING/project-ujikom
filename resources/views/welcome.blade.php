@@ -4,22 +4,33 @@
 <main>
     <div class="header-video">
         <div id="hero_video">
+            <video autoplay muted loop playsinline>
+                <source src="{{ asset('frontend/video/jb.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Tambahkan logo di tengah -->
+            <div class="logo-container">
+                <img src="{{ asset('frontend/img/logo-jb.png') }}" alt="James Boogie Logo" class="logo-overlay">
+            </div>
+
             <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <div class="container">
                     <div class="row justify-content-center justify-content-md-start">
                         <div class="col-lg-6">
-                            <div class="slide-text white">
+                            {{-- <div class="slide-text white">
                                 <h3>Armor Air<br>Max 720 Sage Low</h3>
                                 <p>Limited items available at this price</p>
                                 <a class="btn_1" href="#0" role="button">Shop Now</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <img src="{{ asset ('frontend/video/jb.mp4')}}" alt="" class="header-video--media" data-video-src="video/jb" data-teaser-source="video/jb" data-provider="" data-video-width="1080" data-video-height="608">
     </div>
+
+
     <!-- /header-video -->
 
     <div class="feat">
@@ -59,40 +70,65 @@
 
     <div class="container margin_60_35">
         <div class="row small-gutters categories_grid">
-            <div class="col-sm-12 col-md-6">
-                <a href="listing-grid-1-full.html">
-                    <img src="{{ asset ('/frontend/img/img_cat_home_1_placeholder.png')}}" data-src="img/img_cat_home_1.jpg" alt="" class="img-fluid lazy">
-                    <div class="wrapper">
-                        <h2>Life Style</h2>
-                        <p>115 Products</p>
-                    </div>
-                </a>
-            </div>
+            <!-- Kolom Kiri -->
             <div class="col-sm-12 col-md-6">
                 <div class="row small-gutters mt-md-0 mt-sm-2">
                     <div class="col-sm-6">
                         <a href="listing-grid-1-full.html">
-                            <img src="{{ asset ('/frontend/img/img_cat_home_2_placeholder.png')}}" data-src="img/img_cat_home_2.jpg" alt="" class="img-fluid lazy">
+                            <img src="{{ asset('frontend/img/jaket.jpg') }}" data-src="{{ asset('frontend/img/jaket.jpg') }}" alt="Jaket" class="img-fluid lazy">
                             <div class="wrapper">
-                                <h2>Running</h2>
+                                <h2>Jaket</h2>
+                                <p>115 Products</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="listing-grid-1-full.html">
+                            <img src="{{ asset('frontend/img/sweatshirr.jpg') }}" data-src="{{ asset('frontend/img/sweatshirr.jpg') }}" alt="Sweater" class="img-fluid lazy">
+                            <div class="wrapper">
+                                <h2>SweatShirt</h2>
+                                <p>130 Products</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-12 mt-sm-2">
+                        <a href="listing-grid-1-full.html">
+                            <img src="{{ asset('frontend/img/tass.jpg') }}" data-src="{{ asset('frontend/img/tass.jpg') }}" alt="Vest" class="img-fluid lazy">
+                            <div class="wrapper">
+                                <h2>Tas</h2>
+                                <p>80 Products</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan -->
+            <div class="col-sm-12 col-md-6">
+                <div class="row small-gutters mt-md-0 mt-sm-2">
+                    <div class="col-sm-6">
+                        <a href="listing-grid-1-full.html">
+                            <img src="{{ asset('frontend/img/kaos.jpg') }}" data-src="{{ asset('frontend/img/kaos.jpg') }}" alt="Sweater" class="img-fluid lazy">
+                            <div class="wrapper">
+                                <h2>Kaos</h2>
                                 <p>150 Products</p>
                             </div>
                         </a>
                     </div>
                     <div class="col-sm-6">
                         <a href="listing-grid-1-full.html">
-                            <img src="{{ asset ('/frontend/img/img_cat_home_2_placeholder.png')}}" data-src="img/img_cat_home_3.jpg" alt="" class="img-fluid lazy">
+                            <img src="{{ asset('frontend/img/poloo.jpg') }}" data-src="{{ asset('frontend/img/poloo.jpg') }}" alt="Polo" class="img-fluid lazy">
                             <div class="wrapper">
-                                <h2>Football</h2>
+                                <h2>Polo</h2>
                                 <p>90 Products</p>
                             </div>
                         </a>
                     </div>
                     <div class="col-sm-12 mt-sm-2">
                         <a href="listing-grid-1-full.html">
-                            <img src="{{ asset ('/frontend/img/img_cat_home_4_placeholder.png')}}" data-src="img/img_cat_home_4.jpg" alt="" class="img-fluid lazy">
+                            <img src="{{ asset('frontend/img/kamej.jpg') }}" data-src="{{ asset('frontend/img/kamej.jpg') }}" alt="Kemeja" class="img-fluid lazy">
                             <div class="wrapper">
-                                <h2>Training</h2>
+                                <h2>Kemeja</h2>
                                 <p>120 Products</p>
                             </div>
                         </a>
@@ -100,6 +136,7 @@
                 </div>
             </div>
         </div>
+
         <!--/categories_grid-->
     </div>
     <!-- /container -->
@@ -334,7 +371,7 @@
     </div>
     <!-- /container -->
 
-    <div class="featured lazy" data-bg="url(img/featured_home.jpg)">
+    <div class="featured" style="background-image: url('{{ asset('frontend/img/hat.jpg') }}');">
         <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
             <div class="container margin_60">
                 <div class="row justify-content-center justify-content-md-start">
