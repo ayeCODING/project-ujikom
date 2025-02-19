@@ -28,9 +28,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // ✅ Gunakan `Route::group()` untuk admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', IsAdmin::class]], function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
     // untuk Route Backend Lainnya
     Route::resource('kategori', KategoriController::class);
     Route::resource('produk', ProdukController::class);

@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class IsAdmin
 {
     public function handle(Request $request, Closure $next)
-    {
-        // Cek apakah user sudah login dan memiliki peran admin
-        if (Auth::check() && Auth::user()->is_admin === 1) {
-            return $next($request);
-        }
-
-        // Jika bukan admin atau belum login, tampilkan error 403 (Forbidden)
-        return abort(403);
+{
+    if (Auth::check() && Auth::user()->is_admin === 1) {
+        return $next($request);
     }
+
+    return redirect('/')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
 }
+}
+ 

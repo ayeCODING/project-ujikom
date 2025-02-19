@@ -17,7 +17,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Menampilkan halaman login
+     * Menampilkan halaman login.
      */
     public function showLoginForm()
     {
@@ -50,10 +50,8 @@ class LoginController extends Controller
      */
     protected function redirectAfterLogin(Request $request)
     {
-        $user = Auth::user();
-
-        if ($user->is_admin) {
-            return redirect('/admin')->with('success', 'Selamat datang, Admin!');
+        if (Auth::user()->is_admin === 1) {
+            return redirect()->route('admin.dashboard')->with('success', 'Selamat datang, Admin!');
         }
 
         return redirect('/')->with('success', 'Login berhasil!');
