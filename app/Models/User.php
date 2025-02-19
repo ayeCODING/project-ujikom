@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'user_id',
-        'role', // Pastikan role ada di sini
+        'is_admin', // Pastikan role ada di sini
         'name',
         'email',
         'password',
