@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pembayaran extends Model
+class Pengiriman extends Model
 {
     use HasFactory;
 
-    protected $table = 'pembayarans';
+    protected $table = 'pengiriman';
 
     protected $fillable = [
         'order_id',
-        'id_transaksi_midtrans',
-        'metode_pembayaran',
-        'status_pembayaran',
-        'tanggal_transaksi',
+        'kurir',
+        'layanan',
+        'ongkos_kirim',
+        'no_resi',
+        'status_pengiriman',
     ];
 
-    // Relasi ke tabel orders (satu transaksi dimiliki oleh satu pesanan)
+    // Relasi ke tabel orders (satu pengiriman dimiliki oleh satu pesanan)
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_id');

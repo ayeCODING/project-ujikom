@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('subtotal', 12, 2)->default(0);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->foreign('produk_id')->references('produk_id')->on('produks');
         });
     }

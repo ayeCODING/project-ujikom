@@ -14,16 +14,14 @@ class AdminSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
-        //akun untuk admin
+{
+    // Cek apakah user dengan email ini sudah ada
         User::create([
             'name' => 'adminsalman',
             'email' => 'adminsalman@gmail.com',
             'password' => Hash::make('adminsalman'),
-            'isAdmin' => 1,
+            'role' => 'admin',
         ]);
+}
 
-        //akun untuk user
-
-    }
 }

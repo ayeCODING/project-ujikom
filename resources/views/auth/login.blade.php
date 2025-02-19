@@ -146,12 +146,12 @@
                            <div class="mb-3">
                              <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" name="password">
                            </div>
-                           
+
                            <div class="text-center">
                              <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
                            </div>
                          </form>
-            
+
               <p class="text-center">
                 <span>Buat Akun ?</span>
                 <a href="{{route('register')}}" >
@@ -167,7 +167,7 @@
 
     <!-- / Content -->
 
-   
+
 
     <!-- Core JS -->
     <!-- build:js backend/assets/vendor/js/core.js -->

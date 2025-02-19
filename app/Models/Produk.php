@@ -90,8 +90,12 @@ class Produk extends Model
      * Relasi ke model `Kategori`.
      * Asumsikan Anda memiliki model `Kategori` dan tabel `kategoris`.
      */
-    public function kategori()
+    public function Kategori()
     {
         return $this->belongsTo(Kategori::class, 'kategori_id', 'kategori_id');
+    }
+    public function orderDetails()
+    {
+        return $this->hasMany(orderDetail::class, 'produk_id');
     }
 }

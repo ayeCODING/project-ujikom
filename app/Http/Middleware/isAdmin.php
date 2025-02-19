@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Support\Facades\Auth;
+
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Auth;
 
 class isAdmin
 {
@@ -17,9 +19,12 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->isAdmin != 1) {
+        // Cek apakah user sudah login dan memiliki role admin
+        if (Auth::user()->role === 'admin') {
             return $next($request);
         }
-        return abort(403);
+
+        // Jika bukan admin, redirect ke halaman lain atau berikan pesan error
+        return redirect('/')->with('error', 'You do not have access to this page.');
     }
 }

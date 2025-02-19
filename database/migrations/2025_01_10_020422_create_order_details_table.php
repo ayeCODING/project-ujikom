@@ -14,17 +14,17 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id('order_detail_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('produk_id');
             $table->integer('jumlah');
             $table->decimal('harga', 12, 2);
             $table->decimal('total', 12, 2);
             $table->text('alamat');
-            $table->datetime('tanggal_order')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->enum('status', ['pending', 'completed', 'canceled'])->default('pending');
+            $table->datetime('tanggal_pesanan')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->enum('status', ['Tunda', 'Berhasil', 'Gagal'])->default('Tunda');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('order_id')->references('order_id')->on('orders');
             $table->foreign('produk_id')->references('produk_id')->on('produks');
         });
     }
